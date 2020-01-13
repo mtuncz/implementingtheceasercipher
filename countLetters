@@ -1,0 +1,27 @@
+// counting letters in a passed string and printing only the ones that appear in the string with their counts
+
+public class App {
+    public static void main(String[] args) {
+        countLetters("string");
+
+
+    }
+
+    public static void countLetters(String str){
+        String alpha = "abcdefghijklmnopqrstuvwxyz";
+        int[] counts = new int[alpha.length()];
+        for(int i = 0 ; i < str.length(); i++){
+            char curr = str.charAt(i);
+            int idx = alpha.indexOf(Character.toLowerCase(curr));
+            if(idx != -1){
+                counts[idx]++;
+            }
+        }
+
+        for(int i = 0; i < counts.length; i++){
+            if(counts[i] > 0) {
+                System.out.println(alpha.charAt(i) + "\t" + counts[i] + " times occured");
+            }
+        }
+    }
+}

@@ -1,0 +1,60 @@
+*/
+public class WordPlay {
+    public boolean isVowel(char ch){
+        ch = Character.toUpperCase(ch);
+        String vowels = "AEIOU"; 
+        int idx = vowels.indexOf(ch); 
+        if(idx == -1){
+            return false;
+        } else {
+            return true;
+        }
+        
+    }
+    
+    public void testVowels(){
+        boolean result = isVowel('f');
+        System.out.println(result); 
+        result = isVowel('a'); 
+        System.out.println(result);
+    }
+    
+    public String replaceVowels(String phrase, char ch){
+        StringBuilder sb = new StringBuilder(phrase); 
+        for(int i = 0 ; i < sb.length(); i++){
+            char curr = sb.charAt(i); 
+            if(isVowel(curr)){
+                sb.setCharAt(i, ch);
+            }
+        }
+        return sb.toString(); 
+    }
+
+    public void testReplace(){
+        String message = "hEllO woRlD"; 
+        System.out.println(replaceVowels(message, '*'));
+    }
+    
+    public String emphasize(String str, char ch){
+        StringBuilder sb = new StringBuilder(str); 
+        String chs = Character.toString(ch);
+        for(int i = 0 ; i < sb.length(); i++){
+            
+            if(Character.toString(sb.charAt(i)).equalsIgnoreCase(chs) && i % 2 == 0){
+                sb.setCharAt(i, '*');
+            }
+            if(Character.toString(sb.charAt(i)).equalsIgnoreCase(chs) && i % 2 != 0){
+                sb.setCharAt(i, '+');
+            }
+        }
+        return sb.toString(); 
+    }
+    
+    public void testEmphasize(){
+        String message = "Mary Bella Abracadabra"; 
+        char ch = 'a'; 
+        
+        System.out.println(emphasize(message,ch));
+        
+    }
+}

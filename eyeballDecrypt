@@ -1,0 +1,22 @@
+import edu.duke.*;
+/**
+ * Write a description of Main here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Main {
+    public void eyeballDecrypt(FileResource fr){
+        String encrypted = fr.asString();
+        CaesarCipher cipher = new CaesarCipher(); 
+        for(int k = 0; k < 26; k++){
+            String s = cipher.encrypt(encrypted, k);
+            System.out.println(k + "\t" + s);
+        }
+    }
+
+    public void test(){
+        FileResource fr = new FileResource(); 
+        eyeballDecrypt(fr);
+    }
+}
